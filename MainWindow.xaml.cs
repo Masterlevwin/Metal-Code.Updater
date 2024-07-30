@@ -25,11 +25,17 @@ namespace Metal_Code.Updater
 
         public void UpdateApp()
         {
-            FileInfo serverVersionFile = new FileInfo(serverPath + "\\version.txt");
-            serverVersionFile.CopyTo(Directory.GetCurrentDirectory() + "\\version.txt", true);
+            if (File.Exists(serverPath + "\\version.txt"))
+            {
+                FileInfo serverVersionFile = new FileInfo(serverPath + "\\version.txt");
+                serverVersionFile.CopyTo(Directory.GetCurrentDirectory() + "\\version.txt", true);
+            }
 
-            FileInfo lib = new FileInfo(serverPath + "\\Metal-Code.dll");
-            lib.CopyTo(Directory.GetCurrentDirectory() + "\\Metal-Code.dll", true);
+            if (File.Exists(serverPath + "\\Metal-Code.dll"))
+            {
+                FileInfo lib = new FileInfo(serverPath + "\\Metal-Code.dll");
+                lib.CopyTo(Directory.GetCurrentDirectory() + "\\Metal-Code.dll", true);
+            }
 
             Process.Start(Directory.GetCurrentDirectory() + "\\Metal-Code.exe");
 
