@@ -11,8 +11,8 @@ namespace Metal_Code.Updater
     /// </summary>
     public partial class MainWindow : Window
     {
-        //string serverPath = $"C:\\Users\\maste\\Metal-Code\\bin\\Release\\net7.0-windows";
-        string serverPath = $"Y:\\Конструкторский отдел\\Расчет Заказов ЛФ Сервер\\Metal-Code_Local\\Metal-Code_Local";
+        //string serverPath = $"C:\\Users\\Михаил\\Desktop\\Тест\\Файлы";
+        readonly string serverPath = $"Y:\\Конструкторский отдел\\Расчет Заказов ЛФ Сервер\\Metal-Code_Local\\Metal-Code_Local";
 
         public MainWindow()
         {
@@ -25,17 +25,9 @@ namespace Metal_Code.Updater
 
         public void UpdateApp()
         {
-            if (File.Exists(serverPath + "\\version.txt"))
-            {
-                FileInfo serverVersionFile = new FileInfo(serverPath + "\\version.txt");
-                serverVersionFile.CopyTo(Directory.GetCurrentDirectory() + "\\version.txt", true);
-            }
-
-            if (File.Exists(serverPath + "\\Metal-Code.dll"))
-            {
-                FileInfo lib = new FileInfo(serverPath + "\\Metal-Code.dll");
-                lib.CopyTo(Directory.GetCurrentDirectory() + "\\Metal-Code.dll", true);
-            }
+            if (File.Exists(serverPath))
+                foreach (string file in Directory.GetFiles(serverPath))
+                    File.Copy(file, Directory.GetCurrentDirectory() + $"\\{Path.GetFileName(file)}", true);
 
             Process.Start(Directory.GetCurrentDirectory() + "\\Metal-Code.exe");
 
