@@ -25,12 +25,13 @@ namespace Metal_Code.Updater
 
         public void UpdateApp()
         {
-            if (File.Exists(serverPath))
+            if (Directory.Exists(serverPath))
+            {
                 foreach (string file in Directory.GetFiles(serverPath))
                     File.Copy(file, Directory.GetCurrentDirectory() + $"\\{Path.GetFileName(file)}", true);
+            }
 
             Process.Start(Directory.GetCurrentDirectory() + "\\Metal-Code.exe");
-
             Environment.Exit(0);
         }
     }
