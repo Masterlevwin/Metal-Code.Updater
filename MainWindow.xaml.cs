@@ -12,7 +12,8 @@ namespace Metal_Code.Updater
     public partial class MainWindow : Window
     {
         //string serverPath = $"C:\\Users\\Михаил\\Desktop\\Тест\\Файлы";
-        readonly string serverPath = $"Y:\\Конструкторский отдел\\Расчет Заказов ЛФ Сервер\\Metal-Code_Local\\Metal-Code_Local";
+        //readonly string serverPath = $"Y:\\Конструкторский отдел\\Расчет Заказов ЛФ Сервер\\Metal-Code_Local\\Metal-Code_Local";
+        readonly string serverPath = $"M:\\Metal-Code";
 
         public MainWindow()
         {
